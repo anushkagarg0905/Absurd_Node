@@ -2,7 +2,7 @@
 <div align="center">
 
 # Absurd Node
-<img src="./assets/logo.png" alt="Absurd Node Logo" width="180"/>
+<img src="./reference/logo.png" alt="Absurd Node Logo" width="180"/>
 
 ### AI-Powered OSINT Knowledge Graph Platform for Corporate Intelligence
 
@@ -33,11 +33,8 @@ To ensure consistent development and demonstration environments, the application
 
 ## Graph Explorer
 
-```
+![](./reference/graph-explorer.png)
 
-![Graph Explorer](./reference/graph-explorer.png)
-
-```
 
 ---
 
