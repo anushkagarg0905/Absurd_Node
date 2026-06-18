@@ -196,15 +196,16 @@ export default function Home() {
             FROM RAW DATA TO GRAPHS
           </h2>
 
-          {/* Large grey placeholder representing visual mock */}
-          <div className="w-full aspect-video md:h-[450px] bg-zinc-800/40 border border-zinc-700/60 rounded flex items-center justify-center text-zinc-500 font-mono text-xs shadow-2xl relative mb-12">
-            <span className="animate-pulse">GRAPH VISUALIZATION ACTIVE STREAM</span>
-            {/* Simple decoration to look realistic */}
-            <div className="absolute top-3 left-3 flex gap-1">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-            </div>
+          {/* Video Demonstration */}
+          <div className="w-full aspect-video md:h-[450px] bg-zinc-800/40 border border-zinc-700/60 rounded overflow-hidden shadow-2xl relative mb-12">
+            <video
+              src="/kg.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
           </div>
 
           {/* Horizontal Divider Line */}
