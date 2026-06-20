@@ -9,7 +9,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.config import settings
 from backend.graph.neo4j_client import connect, disconnect
-from backend.routers import health, entities, graph, dashboard
+from backend.routers import health, entities, graph, dashboard, ingest
+
 
 
 @asynccontextmanager
@@ -45,4 +46,6 @@ app.include_router(health.router,     prefix=PREFIX, tags=["health"])
 app.include_router(entities.router,   prefix=PREFIX, tags=["entities"])
 app.include_router(graph.router,      prefix=PREFIX, tags=["graph"])
 app.include_router(dashboard.router,  prefix=PREFIX, tags=["dashboard"])
+app.include_router(ingest.router,     prefix=PREFIX, tags=["ingest"])
+
 
