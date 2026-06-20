@@ -40,8 +40,8 @@ To ensure consistent development and demonstration environments, the application
 
 ## Features
 
-🔹 **Automated Entity Mapping**  
-Extracts organizations, people, locations, and relationships from unstructured corporate data using AI-driven Natural Language Processing.
+🔹 **Automated Data Ingestion**
+Scrapes web content using Playwright and extracts entities/relationships via AI-driven processing.
 
 🔹 **AI Summary Generation**  
 Generates concise investigation summaries using the Gemini API, allowing analysts to quickly understand extracted intelligence without manually reviewing every source.
@@ -54,6 +54,9 @@ Visualizes entities and their relationships using React Flow, enabling users to 
 
 🔹 **Neo4j Integration**  
 Uses Neo4j as the primary graph database for storing and querying complex relationship networks that are difficult to represent using relational databases.
+
+🔹 **AI-Powered Analysis** 
+Utilizes the Google Gemini API to structure unstructured text into valid JSON graph data.
 
 🔹 **Mock Mode**  
 Automatically falls back to predefined mock datasets whenever a Neo4j instance is unavailable, allowing the application to remain fully functional for development and demonstrations.
@@ -84,10 +87,10 @@ Provides investigation statistics, graph summaries, and intelligence metrics thr
 
 - Neo4j Graph Database
 
-### Artificial Intelligence
+### Ingestion Pipeline:
 
-- Google Gemini API
-- Natural Language Processing (NLP)
+- Playwright (Scraping)
+- Google GenerativeAI (Gemini API for NLP/Extraction)
 - Automated Entity Extraction
 - AI Summary Generation
 
@@ -98,6 +101,9 @@ Provides investigation statistics, graph summaries, and intelligence metrics thr
 ```
                Public Corporate Data
       (News, Websites, Company Profiles)
+                     │
+                     ▼
+           Scraping and Analysis
                      │
                      ▼
            NLP Entity Extraction
