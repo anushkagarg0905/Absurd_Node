@@ -99,81 +99,111 @@ Provides investigation statistics, graph summaries, and intelligence metrics thr
                      ▼
         Interactive Graph Explorer
 ```
-
 ---
 
-### Installation
 
-**1. Clone Repository**
+## Installation
+
+### Clone Repository
+
 ```bash
 git clone <repository-url>
 cd absurd-node
-```
+````
 
-**2. Frontend**
+### Frontend
+
 ```bash
 npm install
 npm run dev
 ```
 
-**3. Backend**
+### Backend
+
 ```bash
 python -m venv .venv
-# Activate the environment
-# Install dependencies
+```
+
+Activate the environment.
+
+Install dependencies.
+
+```bash
 pip install -r requirements.txt
-# Run the backend
+```
+
+Run the backend.
+
+```bash
 uvicorn backend.main:app --reload
 ```
 
 ---
 
-### Environment Variables
+## Environment Variables
+
 Create a `.env` file.
 
 ```env
 NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
 NEO4J_PASSWORD=your_password
+
 USE_MOCK_DATA=False
+
 GEMINI_API_KEY=your_api_key
 ```
 
-### Mock Mode
+---
+
+## Mock Mode
+
 For development without Neo4j:
 
 ```env
 USE_MOCK_DATA=True
+
 NEO4J_URI=
 ```
+
 When enabled, all graph requests are automatically served from predefined local datasets without requiring a running database.
 
 ---
 
-### Performance Optimizations
+## Design Decisions
+
+🔹 **Graph Database**  
+Neo4j was selected over traditional relational databases because OSINT investigations naturally consist of interconnected entities and multi-directional relationships. Graph traversal provides significantly more intuitive querying for investigative workflows.
+
+🔹 **Mock Data Fallback**  
+The application automatically switches to local mock services whenever a database connection cannot be established, allowing uninterrupted frontend development and demonstrations.
+
+🔹 **AI-Assisted Investigation**  
+Instead of only visualizing data, the platform generates AI-powered summaries to help analysts quickly understand the significance of extracted information.
+
+---
+
+## Performance Optimizations
+
 To maintain responsiveness and prevent browser performance degradation, the visualization engine enforces several constraints.
 
-* 🟡 Maximum traversal depth of 1–2 hops
-* 🟡 Maximum 50 graph nodes per request
-* 🟡 Limited relationship expansion for smooth rendering
-* 🟡 Asynchronous FastAPI request handling
-* 🟡 Lightweight mock service for offline execution
+
+- 🟡 Maximum traversal depth of **1–2 hops**
+- 🟡 Maximum **50 graph nodes** per request
+- 🟡 Limited relationship expansion for smooth rendering
+- 🟡 Asynchronous FastAPI request handling
+- 🟡 Lightweight mock service for offline execution
 
 ---
 
-### Current Limitations
-* 🔴 Designed primarily for corporate intelligence investigations.
-* 🔴 Currently optimized for public data sources.
-* 🔴 Graph traversal is intentionally limited to 1–2 hops.
-* 🔴 Maximum of 50 entities are returned per query to preserve visualization performance.
-* 🔴 No authentication or multi-user investigation support.
-* 🔴 Live deployment is not currently available.
+## Current Limitations
+
+- 🔴 Designed primarily for corporate intelligence investigations.
+- 🔴 Currently optimized for public data sources.
+- 🔴 Graph traversal is intentionally limited to **1–2 hops**.
+- 🔴 Maximum of **50 entities** are returned per query to preserve visualization performance.
+- 🔴 No authentication or multi-user investigation support.
+- 🔴 Live deployment is not currently available.
 
 ---
 
-### Future Roadmap
-* 🟢 Multi-hop graph exploration
-* 🟢 Advanced entity linking
-* 🟢 Timeline-based investigation view
-* 🟢 Investigation history
-* 🟢 Cloud deployment support
