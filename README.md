@@ -1,12 +1,27 @@
+<div align="center">
+
 # Absurd Node
-![Absurd Node Logo](public/logo.png)
+<img src="./reference/logo.png" alt="Absurd Node Logo" width="180"/>
 
 ### AI-Powered OSINT Knowledge Graph Platform for Corporate Intelligence
+
 Transform unstructured corporate intelligence into an interactive, searchable Knowledge Graph using AI, NLP, and Graph Databases.
 
 ---
 
-### Overview
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square)
+![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?style=flat-square)
+![Neo4j](https://img.shields.io/badge/Neo4j-Graph%20Database-008CC1?style=flat-square)
+![React Flow](https://img.shields.io/badge/React%20Flow-Visualization-blue?style=flat-square)
+![Gemini API](https://img.shields.io/badge/Gemini-AI-orange?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
+</div>
+
+---
+
+## Overview
+
 Absurd Node is an AI-powered Open-Source Intelligence (OSINT) platform designed to automate corporate intelligence investigations. Instead of manually browsing through fragmented sources, the platform transforms publicly available information—including news articles, corporate websites, and organizational profiles—into an interactive Knowledge Graph that enables investigators to discover relationships, explore networks, and identify hidden connections.
 
 The platform combines Natural Language Processing (NLP), Large Language Models, and graph databases to extract entities and relationships from unstructured text before visualizing them through an interactive graph interface.
@@ -15,62 +30,79 @@ To ensure consistent development and demonstration environments, the application
 
 ---
 
-### Features
+## Graph Explorer
 
-🔹 **Automated Entity Mapping**
-Extracts organizations, people, locations, and relationships from unstructured corporate data using AI-driven Natural Language Processing.
+![](./reference/graph-explorer.png)
 
-🔹 **AI Summary Generation**
+
+---
+
+## Features
+
+🔹 **Automated Data Ingestion**
+Scrapes web content using Playwright and extracts entities/relationships via AI-driven processing.
+
+🔹 **AI Summary Generation**  
 Generates concise investigation summaries using the Gemini API, allowing analysts to quickly understand extracted intelligence without manually reviewing every source.
 
-🔹 **Knowledge Graph Construction**
+🔹 **Knowledge Graph Construction**  
 Transforms extracted entities into an interconnected Knowledge Graph stored within Neo4j for efficient relationship traversal and querying.
 
-🔹 **Interactive Graph Visualization**
+🔹 **Interactive Graph Visualization**  
 Visualizes entities and their relationships using React Flow, enabling users to explore connections through an intuitive graph interface.
 
-🔹 **Neo4j Integration**
+🔹 **Neo4j Integration**  
 Uses Neo4j as the primary graph database for storing and querying complex relationship networks that are difficult to represent using relational databases.
 
-🔹 **Mock Mode**
+🔹 **AI-Powered Analysis** 
+Utilizes the Google Gemini API to structure unstructured text into valid JSON graph data.
+
+🔹 **Mock Mode**  
 Automatically falls back to predefined mock datasets whenever a Neo4j instance is unavailable, allowing the application to remain fully functional for development and demonstrations.
 
-🔹 **Responsive Dashboard**
+🔹 **Responsive Dashboard**  
 Provides investigation statistics, graph summaries, and intelligence metrics through a clean dashboard interface.
 
 ---
 
-### Technology Stack
+## Technology Stack
 
-**Frontend**
-* Next.js (App Router)
-* React
-* TypeScript
-* Tailwind CSS
-* React Flow
+### Frontend
 
-**Backend**
-* FastAPI
-* Python
-* Pydantic
-* Uvicorn
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- React Flow
 
-**Database**
-* Neo4j Graph Database
+### Backend
 
-**Artificial Intelligence**
-* Google Gemini API
-* Natural Language Processing (NLP)
-* Automated Entity Extraction
-* AI Summary Generation
+- FastAPI
+- Python
+- Pydantic
+- Uvicorn
+
+### Database
+
+- Neo4j Graph Database
+
+### Ingestion Pipeline:
+
+- Playwright (Scraping)
+- Google GenerativeAI (Gemini API for NLP/Extraction)
+- Automated Entity Extraction
+- AI Summary Generation
 
 ---
 
-### System Architecture
+## System Architecture
 
-```text
+```
                Public Corporate Data
       (News, Websites, Company Profiles)
+                     │
+                     ▼
+           Scraping and Analysis
                      │
                      ▼
            NLP Entity Extraction
@@ -99,8 +131,29 @@ Provides investigation statistics, graph summaries, and intelligence metrics thr
                      ▼
         Interactive Graph Explorer
 ```
+
+```
+```
 ---
 
+## AI Pipeline
+
+```text
+Raw Corporate Data
+      ↓
+Entity Extraction (NLP)
+      ↓
+Relationship Detection
+      ↓
+Knowledge Graph Generation
+      ↓
+Neo4j Storage
+      ↓
+AI Summary Generation (Gemini)
+      ↓
+Interactive Graph Visualization
+```
+---
 
 ## Installation
 
@@ -202,8 +255,17 @@ To maintain responsiveness and prevent browser performance degradation, the visu
 - 🔴 Currently optimized for public data sources.
 - 🔴 Graph traversal is intentionally limited to **1–2 hops**.
 - 🔴 Maximum of **50 entities** are returned per query to preserve visualization performance.
-- 🔴 No authentication or multi-user investigation support.
-- 🔴 Live deployment is not currently available.
 
 ---
+
+## Future Roadmap
+
+- 🟢 Multi-hop graph exploration
+- 🟢 Advanced entity linking
+- 🟢 Timeline-based investigation view
+- 🟢 Investigation history
+- 🟢 Cloud deployment support
+
+---
+
 
