@@ -21,18 +21,20 @@ def dashboard(q: str = Query(..., description="Entity name to investigate")):
     if use_neo4j:
         metrics = neo4j_queries.get_metrics(driver, q)
         relationships = neo4j_queries.get_relationships(driver, q, limit=20)
-        # AI summary always uses mock text unless a Gemini call is wired in
         ai_summary = mock_service.get_ai_summary_for_query(q)
+        recent_investigations = neo4j_queries.get_recent_investigations(driver, limit=5)
     else:
         metrics = mock_service.get_metrics_for_query(q)
         relationships = mock_service.get_relationships_for_query(q)
         ai_summary = mock_service.get_ai_summary_for_query(q)
+        recent_investigations = mock_service.get_recent_investigations()
 
     return {
         "metrics": metrics,
         "relationships": relationships,
         "aiSummary": ai_summary,
-        "recentInvestigations": mock_service.get_recent_investigations(),
+        "recentInvestigations": recent_investigations,
         "source": "neo4j" if use_neo4j else "mock",
     }
+
 

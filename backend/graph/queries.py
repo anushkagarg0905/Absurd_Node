@@ -64,23 +64,16 @@ def get_subgraph(driver: Driver, name: str, limit: int = 25) -> dict[str, Any]:
     return {"nodes": nodes, "edges": [_format_edge(e) for e in edges if e.get("id") is not None]}
 
 
-def get_relationships(driver: Driver, name: str, limit: int = 20) -> list[dict]:
-    """Top-N relationships by confidence for the given entity name."""
+def get_recent_investigations(driver: Driver, limit: int = 5) -> list[dict]:
+    """Return the N most recent investigations."""
     cypher = """
-    MATCH (a:Entity)-[r]-(b:Entity)
-    WHERE toLower(a.canonical_name) = toLower($name)
-       OR toLower(a.name) = toLower($name)
-    RETURN
-        coalesce(a.canonical_name, a.name) AS source,
-        a.entity_type AS sourceType,
-        type(r) AS relationship,
-        coalesce(b.canonical_name, b.name) AS target,
-        b.entity_type AS targetType,
-        coalesce(r.confidence, 0.8) AS confidenceScore
-    ORDER BY confidenceScore DESC
+    MATCH (i:Investigation)
+    RETURN i.title AS title, i.date AS date, i.summary AS summary
+    ORDER BY i.date DESC
     LIMIT $limit
     """
-    return _run(driver, cypher, {"name": name, "limit": limit})
+    return _run(driver, cypher, {"limit": limit})
+
 
 
 def get_metrics(driver: Driver, name: str) -> dict[str, Any]:
